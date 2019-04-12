@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        @import "https://fonts.googleapis.com/css?family=Inconsolata";
+        html {
+        min-height: 100%;
+        }
+        input[type="text"]{
+            font-family: 'Inconsolata', Helvetica, sans-serif;
+            font-size: 1em;
+            /* font-size: 22px; */
+            color: #11581E;
+            font-weight: 900;
+            text-shadow: 0 0 1px rgba(51, 255, 51, 0.4), 0 0 2px rgba(255, 255, 255, 0.8);
+            width: 20em;
+            /* width: 108px; */
+            display: inline-block;
+            text-align: center;
+            padding: 0.2em 0;
+            border: none;
+            outline: none;
+            -webkit-border-radius: 4px;
+            -moz-border-radius: 4px;
+            border-radius: 4px;
+            -webkit-transition: all .2s linear;
+            -moz-transition: all .2s linear;
+            transition: all .2s linear;
+            background: #00000069;
+
+
+        }
+        .active{
+            font-size: 1em !important;
+            width: 108px !important;
+            background: white !important;
+        }
+        input::placeholder{
+            color: rgba(128, 255, 128, 0.8);
+        }
+        #hackit{
+            width: 35px;
+            height: 35px;
+            border: none;
+            text-indent: -9999px;
+        opacity: .4;
+            background: url(arrow-pointing-right-in-a-circle.svg) no-repeat;
+            background-size: 13px;
+            background-position: 0 1px;
+            -webkit-transition: all .2s linear;
+            -moz-transition: all .2s linear;
+            transition: all .2s linear;
+        
+            cursor: pointer; /* for demo only */
+
+            display: none;
+        }
+        #hackit:hover {
+            opacity: .5;
+        }
+
+        #hackit.show {
+            display: inline-block;
+            background-size: 33px;
+        }
+        body {
+        box-sizing: border-box;
+        height: 100%;
+        background-color: #000000;
+        background-image: radial-gradient(#11581E, #041607);
+        font-family: 'Inconsolata', Helvetica, sans-serif;
+        font-size: 1.5rem;
+        color: rgba(128, 255, 128, 0.8);
+        text-shadow: 0 0 1ex #33ff33, 0 0 2px rgba(255, 255, 255, 0.8);
+        /* overflow: hidden; */
+        overflow-x: hidden;
+        }
+
+        .overlay {
+        pointer-events: none;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: repeating-linear-gradient(180deg, rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0.3) 50%, rgba(0, 0, 0, 0) 100%);
+        background-size: auto 4px;
+        z-index: 99;
+        }
+
+        .overlay::before {
+        content: "";
+        pointer-events: none;
+        position: absolute;
+        display: block;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        background-image: linear-gradient(0deg, transparent 0%, rgba(32, 128, 32, 0.2) 2%, rgba(32, 128, 32, 0.8) 3%, rgba(32, 128, 32, 0.2) 3%, transparent 100%);
+        background-repeat: no-repeat;
+        -webkit-animation: scan 7.5s linear 0s infinite;
+                animation: scan 7.5s linear 0s infinite;
+        }
+
+        @-webkit-keyframes scan {
+        0% {
+            background-position: 0 -100vh;
+        }
+        35%, 100% {
+            background-position: 0 100vh;
+        }
+        }
+
+        @keyframes scan {
+        0% {
+            background-position: 0 -100vh;
+        }
+        35%, 100% {
+            background-position: 0 100vh;
+        }
+        }
+        .terminal {
+        box-sizing: inherit;
+        position: relative;
+        display: block;
+        height: 100%;
+        width: 1000px;
+        max-width: 100%;
+        padding: 4rem;
+        text-transform: uppercase;
+        }
+
+        .output {
+        color: rgba(128, 255, 128, 0.8);
+        text-shadow: 0 0 1px rgba(51, 255, 51, 0.4), 0 0 2px rgba(255, 255, 255, 0.8);
+        }
+
+        .output::before {
+        content: "> ";
+        }
+
+        /*
+        .input {
+        color: rgba(192, 255, 192, 0.8);
+        text-shadow:
+            0 0 1px rgba(51, 255, 51, 0.4),
+            0 0 2px rgba(255, 255, 255, 0.8);
+        }
+
+        .input::before {
+        content: "$ ";
+        }
+        */
+        a {
+        color: rgba(128, 255, 128, 0.8);
+        text-decoration: none;
+        }
+
+        a::before {
+        content: "[";
+        }
+
+        a::after {
+        content: "]";
+        }
+
+        .errorcode {
+        color: white;
+        }
+        iframe{
+            width: 100%;
+            position: relative;
+            height: 0px;
+            display: block;
+            z-index: 100;
+            border-radius: 11px;
+            opacity: 0.8;
+            transition: 1.2s linear;
+        }
+    </style>
+    <title>deAjagz | made by Adarsh</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+    <div class="overlay"></div>
+    <div class="terminal">
+    <h1>Hack <span class="errorcode">ajagz</span> with CaveMenDev</h1>
+    <p class="output">This page is to demonstrate how fool you are to use something without knowing anything!</ü>
+    <p class="output"><input type="text" placeholder="PLEASE ENTER VICTIM'S CODE" id="code" maxlength="7"> <input type="button" id="hackit" onclick="hackit()"></p>
+    
+    <p class="output">Made with ❤ by <a href="https://github.com/Adarsh-Mohanty/" target="_blank">Adarsh</a> </p>
+    </div>
+    <iframe id="frame" src="" frameborder="0"></iframe>
+    <script>
+        $(document).ready(function (){
+	
+            $('#code').click(function() {
+                $(this).addClass("active");
+            $(this).attr('placeholder','');
+                $('#hackit').addClass("show");
+            });
+
+        });
+
+    </script>
+    <script>
+        function hackit(){
+         var frame=document.getElementById("frame");
+         code='index1.php?code='+document.getElementById("code").value;
+        
+         frame.setAttribute("src",code); 
+         frame.style.height="500px";
+        }
+    </script>
+</body>
+</html>
